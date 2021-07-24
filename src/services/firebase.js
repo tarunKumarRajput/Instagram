@@ -20,3 +20,8 @@ export async function getUserById(userId) {
 
   return user;
 }
+
+export async function getSuggestedProfiles(userId) {
+  const result = await firebase.firestore().collection('user').limit(10).get();
+  return result;
+}
