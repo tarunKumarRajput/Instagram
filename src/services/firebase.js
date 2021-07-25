@@ -11,7 +11,7 @@ export async function doesUsernameExists(username) {
 }
 
 // get user from the firestore where userId === userId (passed from the auth)
-export async function getUserById(userId) {
+export async function getUserByUserId(userId) {
   const result = await firebase.firestore().collection('users').where('userId', '==', userId).get();
   const user = result.docs.map((item) => ({
     ...item.data(),
@@ -60,4 +60,33 @@ export async function updateFollowedUserFollowers(
         ? FieldValue.arrayRemove(loggedInUserDocId)
         : FieldValue.arrayUnion(loggedInUserDocId)
     });
+}
+
+export async function getPhotos(userId, following) {
+  const result = await firebase
+    .firestore()
+    .collection('photos')
+    .where('userId', 'in', following)
+    .get();
+
+  const userFollowedPhotos = result.docs.map((photo) => ({
+    ...photo.data(),
+    docId: photo.id
+  }));
+
+  const photosWithUserDetails = await Promise.all(
+    userFollowedPhotos.map(async (photo) => {
+      let userLikedPhoto = false;
+      if (photo.likes.includes(userId)) {
+        userLikedPhoto = true;
+      }
+
+      // photo.userId = 2
+      const user = await getUserByUserId(photo.userId);
+      // raphel
+      const { username } = user[0];
+      return { username, ...photo, userLikedPhoto };
+    })
+  );
+  return photosWithUserDetails;
 }
