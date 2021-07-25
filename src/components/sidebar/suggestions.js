@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
@@ -16,11 +17,8 @@ export default function Suggestions({ userId, following }) {
     if (userId) {
       suggestedProfiles();
     }
-
-    console.log('profiles', profiles);
   }, [userId]);
 
-  // eslint-disable-next-line no-nested-ternary
   return !profiles ? (
     <Skeleton count={1} height={150} className="mt-5" />
   ) : profiles.length > 0 ? (
@@ -28,11 +26,11 @@ export default function Suggestions({ userId, following }) {
       <div className="text-sm flex items-center align-items justify-between mb-2">
         <p className="font-bold text-gray-base">Suggestions for you</p>
       </div>
-      <div className="mt-4 gird gap-5 ">
+      <div className="mt-4 grid gap-5">
         {profiles.map((profile) => (
           <SuggestedProfile
             key={profile.docId}
-            userDocId={profile.docId}
+            profileDocId={profile.docId}
             username={profile.username}
             profileId={profile.userId}
             userId={userId}
