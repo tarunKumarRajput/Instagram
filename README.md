@@ -1,5 +1,5 @@
 # 📣Instagram - Summary
-Built an Instagram Clone in aim to get full knowledge of react and how react works.
+Instagram Clone in aim to get full knowledge of react and how react works.
 
 I have build this application form scratch using react, tailwind css and firebase. In this application (Instagram clone) was built using React (Custom Hooks, Context), Firebase & Tailwind CSS. I have built the following pages within this application: login, sign up, dashboard & lastly the user profile page. Firebase firestore handles all the data, and that data is retrieved using a custom hook. Special thanks to: https://www.youtube.com/watch?v=AKeaaa8yAAk
 
