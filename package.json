@@ -64,5 +64,18 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Instagram Clone in aim to get full knowledge of react and how react works.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarunKumarRajput/Instagram.git"
+  },
+  "keywords": [],
+  "author": "Tarun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tarunKumarRajput/Instagram/issues"
+  },
+  "homepage": "https://github.com/tarunKumarRajput/Instagram#readme"
 }
